@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="leagues"
+            type="com.user.brayan.condorlabs.model.Leagues" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        app:cardCornerRadius="@dimen/card_corner_radius">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="@dimen/dimen_image_thumbnail"
+                android:layout_height="@dimen/dimen_image_thumbnail"
+                android:layout_marginRight="@dimen/default_margin"
+                imageUrl="@{leagues.badge}"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text="@{leagues.league}"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:text="@{@string/sport_league(leagues.sport)}"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginRight="@dimen/default_margin"/>
+
+                <TextView
+                    android:text="@{@string/country_league(leagues.country)}"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginRight="@dimen/default_margin"/>
+
+                <TextView
+                    android:textSize="13sp"
+                    android:text="@string/current_season_league"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="@{leagues.currentSeason}"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginRight="@dimen/default_margin"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ligas</string>
+    <string name="retry">Reintentar</string>
+    <string name="sport_league">Deporte: %1$s</string>
+    <string name="stadium_team">Estadio: %1$s</string>
+    <string name="country_league">País %1$s</string>
+    <string name="current_season_league">Temporada Actual</string>
+    <string name="unknown_error">Error Desconocido</string>
+</resources>

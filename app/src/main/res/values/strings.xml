@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">League</string>
+    <string name="retry">Retry</string>
+    <string name="sport_league">Sport: %1$s</string>
+    <string name="stadium_team">Stadium: %1$s</string>
+    <string name="country_league">Country %1$s</string>
+    <string name="current_season_league">Current Season</string>
+    <string name="unknown_error">Unknown Error</string>
+</resources>

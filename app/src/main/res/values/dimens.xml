@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="card_corner_radius">15sp</dimen>
+    <dimen name="dimen_image_thumbnail">150sp</dimen>
+
+</resources>

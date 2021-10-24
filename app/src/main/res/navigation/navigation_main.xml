@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/navigation_league">
+
+    <fragment
+        android:id="@+id/navigation_league"
+        android:name="com.user.brayan.condorlabs.ui.league.LeagueFragment"
+        android:label="league_fragment"
+        tools:layout="@layout/league_fragment" >
+
+        <action
+            android:id="@+id/action_navigation_league_to_teamsFragment"
+            app:destination="@id/navigation_teams" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_teams"
+        android:name="com.user.brayan.condorlabs.ui.team.TeamsFragment"
+        android:label="teams_fragment"
+        tools:layout="@layout/teams_fragment" >
+        <action
+            android:id="@+id/action_teamsFragment_to_navigation_league"
+            app:destination="@id/navigation_league" />
+        <argument
+            android:name="idLeague"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_navigation_teams_to_detailsTeamFragment"
+            app:destination="@id/detailsTeamFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsTeamFragment"
+        android:name="com.user.brayan.condorlabs.ui.details_team.DetailsTeamFragment"
+        android:label="details_team_fragment"
+        tools:layout="@layout/details_team_fragment">
+
+        <argument
+            android:name="idTeam"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_detailsTeamFragment_to_navigation_teams"
+            app:destination="@id/navigation_teams" />
+    </fragment>
+</navigation>
