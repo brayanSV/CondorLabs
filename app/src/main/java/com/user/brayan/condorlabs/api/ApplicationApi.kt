@@ -14,6 +14,6 @@ interface  ApplicationApi {
     @GET("lookupteam.php")
     fun teamsById(@Query("id") idTeam: Long): LiveData<ApiResponse<Teams>>
 
-    @GET("eventslast.php.php")
+    @GET("eventslast.php")
     fun teamEvents(@Query("id") idTeam: Long): LiveData<ApiResponse<List<Events>>>
 }

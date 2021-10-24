@@ -3,7 +3,14 @@
     <string name="retry">Retry</string>
     <string name="sport_league">Sport: %1$s</string>
     <string name="stadium_team">Stadium: %1$s</string>
-    <string name="country_league">Country %1$s</string>
+    <string name="country_league">Country: %1$s</string>
     <string name="current_season_league">Current Season</string>
     <string name="unknown_error">Unknown Error</string>
+    <string name="team_foundation">%1$s (%2$s)</string>
+    <string name="description_team">Description:</string>
+    <string name="events_team">Events:</string>
+    <string name="social_networks">Social Networks:</string>
+    <string name="title_league">Leagues</string>
+    <string name="title_teams">Teams</string>
+    <string name="title_details_teams">Detail Team</string>
 </resources>

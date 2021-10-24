@@ -55,15 +55,6 @@ public class CustomGsonResponseBodyConverter<T> implements Converter<ResponseBod
 
         try {
             T result = adapter.fromJson(jsonResult.toString());
-
-            /*T result = adapter.read(jsonReader);
-            Log.e("datos", result.toString());
-
-            if (jsonReader.peek() != JsonToken.END_DOCUMENT) {
-                throw new JsonIOException("JSON document was not fully consumed.");
-            }*/
-
-            //T result = null;
             return result;
         } finally {
             value.close();

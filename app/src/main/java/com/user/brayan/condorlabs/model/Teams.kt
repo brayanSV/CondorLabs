@@ -18,13 +18,15 @@ data class Teams (
     @field:SerializedName("strStadium")
     val stadium: String,
     @field:SerializedName("strDescriptionES")
-    val description: String?,
+    val descriptionEs: String?,
+    @field:SerializedName("strDescriptionEN")
+    val descriptionEn: String?,
     @field:SerializedName("intFormedYear")
     val formedYear: String,
     @field:SerializedName("strTeamBadge")
     val badge: String,
     @field:SerializedName("strTeamJersey")
-    val jersey: String,
+    val jersey: String?,
     @field:SerializedName("strWebsite")
     val website: String,
     @field:SerializedName("strFacebook")

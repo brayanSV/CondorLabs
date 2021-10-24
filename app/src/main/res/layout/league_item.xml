@@ -11,23 +11,27 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:layout_marginBottom="10sp"
-        app:cardCornerRadius="@dimen/card_corner_radius">
+        app:strokeWidth="1sp"
+        app:strokeColor="@color/gray_e2e2e2">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding">
+            android:padding="@dimen/default_padding_card"
+            android:gravity="center_vertical">
 
             <ImageView
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="@dimen/dimen_image_thumbnail"
                 android:layout_height="@dimen/dimen_image_thumbnail"
-                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin_image"
                 imageUrl="@{leagues.badge}"/>
 
             <LinearLayout
@@ -36,7 +40,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:textSize="15sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:text="@{leagues.league}"
                     android:textColor="@color/black"
@@ -44,15 +48,6 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"/>
-
-                <TextView
-                    android:text="@{@string/sport_league(leagues.sport)}"
-                    android:textSize="13sp"
-                    android:textColor="@color/black"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin"
-                    android:layout_marginRight="@dimen/default_margin"/>
 
                 <TextView
                     android:text="@{@string/country_league(leagues.country)}"
@@ -64,11 +59,20 @@
                     android:layout_marginRight="@dimen/default_margin"/>
 
                 <TextView
+                    android:text="@{@string/sport_league(leagues.sport)}"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/default_margin"/>
+
+                <TextView
                     android:textSize="13sp"
                     android:text="@string/current_season_league"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/default_margin"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"/>
 
                 <TextView
@@ -77,9 +81,9 @@
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin"
                     android:layout_marginRight="@dimen/default_margin"/>
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView
+        >
 </layout>

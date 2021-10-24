@@ -4,7 +4,14 @@
     <string name="retry">Reintentar</string>
     <string name="sport_league">Deporte: %1$s</string>
     <string name="stadium_team">Estadio: %1$s</string>
-    <string name="country_league">País %1$s</string>
+    <string name="country_league">País: %1$s</string>
     <string name="current_season_league">Temporada Actual</string>
     <string name="unknown_error">Error Desconocido</string>
+    <string name="team_foundation">%1$s (%2$s)</string>
+    <string name="description_team">Descripción:</string>
+    <string name="events_team">Eventos:</string>
+    <string name="social_networks">Redes Sociales:</string>
+    <string name="title_league">Ligas</string>
+    <string name="title_teams">Equipos</string>
+    <string name="title_details_teams">Detalle del equipo</string>
 </resources>

@@ -1,13 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.details_team.DetailsTeamFragment">
 
-    <TextView
+    <data>
+        <import type="java.util.List" />
+        <import type="androidx.lifecycle.LiveData" />
+        <import type="com.user.brayan.condorlabs.model.Teams" />
+        <import type="com.user.brayan.condorlabs.model.Events" />
+        <import type="com.user.brayan.condorlabs.repository.Resource" />
+        <import type="com.user.brayan.condorlabs.ui.common.RetryCallback"/>
+        <import type="com.user.brayan.condorlabs.ui.common.SocialNetworksCallback"/>
+
+        <variable
+            name="retryCallback"
+            type="RetryCallback"/>
+
+        <variable
+            name="socialCallback"
+            type="SocialNetworksCallback"/>
+
+        <variable
+            name="detailTeam"
+            type="Teams" />
+
+        <variable
+            name="teamsResult"
+            type="LiveData&lt;Resource&lt;Teams>>"/>
+
+        <variable
+            name="eventsResult"
+            type="LiveData&lt;Resource&lt;List&lt;Events>>>"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello 1" />
+        android:padding="@dimen/default_padding"
+        android:layout_marginTop="@dimen/default_margin">
 
-</FrameLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <ImageView
+                        imageUrl="@{detailTeam.badge}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/image_details"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_launcher"
+                        android:layout_marginRight="@dimen/default_margin"/>
+
+                    <ImageView
+                        imageUrl="@{detailTeam.jersey}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/image_details"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        visibleGone="@{detailTeam.jersey != null}"
+                        android:src="@mipmap/ic_launcher" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/team_foundation(detailTeam.team, detailTeam.formedYear)}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/default_margin_titles"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_team"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/default_margin_titles"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{detailTeam.descriptionEs ?? detailTeam.descriptionEn}"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/events_team"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:layout_marginTop="@dimen/default_margin_titles"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/eventsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:layoutManager="LinearLayoutManager"
+                    tools:listitem="@layout/events_item" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/social_networks"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    visibleGone="@{detailTeam.facebook != null || detailTeam.twitter != null || detailTeam.instagram != null || detailTeam.website != null}"
+                    android:layout_marginTop="@dimen/default_margin_titles"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin">
+
+                    <ImageButton
+                        android:src="@drawable/facebook"
+                        android:layout_width="45sp"
+                        android:layout_height="45sp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:background="@android:color/transparent"
+                        app:visibleGone="@{detailTeam.facebook != null}"
+                        android:layout_marginRight="@dimen/default_margin_image"
+                        android:onClick="@{() -> socialCallback.facebook(detailTeam.facebook)}"/>
+
+                    <ImageButton
+                        android:src="@drawable/twitter"
+                        android:layout_width="45sp"
+                        android:layout_height="45sp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:visibleGone="@{detailTeam.twitter != null}"
+                        android:background="@android:color/transparent"
+                        android:layout_marginRight="@dimen/default_margin_image"
+                        android:onClick="@{() -> socialCallback.twitter(detailTeam.twitter)}"/>
+
+                    <ImageButton
+                        android:src="@drawable/instagram"
+                        android:layout_width="45sp"
+                        android:layout_height="45sp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:visibleGone="@{detailTeam.instagram != null}"
+                        android:background="@android:color/transparent"
+                        android:layout_marginRight="@dimen/default_margin_image"
+                        android:onClick="@{() -> socialCallback.instagram(detailTeam.instagram)}"/>
+
+                    <ImageButton
+                        android:src="@drawable/sitio_web"
+                        android:layout_width="45sp"
+                        android:layout_height="45sp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:visibleGone="@{detailTeam.website != null}"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> socialCallback.website(detailTeam.website)}"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/loading_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:callback="@{() -> retryCallback.retry()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            app:resource="@{(Resource) teamsResult ?? eventsResult}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

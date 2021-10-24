@@ -11,22 +11,30 @@ import javax.inject.Inject
 
 class TeamsViewModel @Inject constructor(teamsRepository: TeamsRepository) : ViewModel() {
     private val _idLeague: MutableLiveData<Long> = MutableLiveData()
-    private val idLeague: LiveData<Long> = _idLeague
+    val idLeague: LiveData<Long> = _idLeague
 
     val loadTeams: LiveData<Resource<List<Teams>>> = Transformations
         .switchMap(idLeague) {
             teamsRepository.loadTeams(it)
         }
 
-    fun setIdLeague(id: Long?) {
-        if (id == 0L) {
-            return
-        }
+    fun setIdLeague(id: Long?, retry: Boolean) {
+        if (retry) {
+            _idLeague.value = id
+        } else {
+            if (id == 0L) {
+                return
+            }
 
-        if (idLeague.value == id) {
-            return
-        }
+            if (idLeague.value == id) {
+                return
+            }
 
-        _idLeague.value = id
+            _idLeague.value = id
+        }
+    }
+
+    fun retry() {
+        setIdLeague(_idLeague.value, true)
     }
 }

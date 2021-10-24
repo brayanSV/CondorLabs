@@ -10,7 +10,7 @@ import com.user.brayan.condorlabs.model.Teams
         Teams::class,
         Events::class
     ],
-    version = 2
+    version = 5
 )
 
 abstract class CondorLabsDb: RoomDatabase() {

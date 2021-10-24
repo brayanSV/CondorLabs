@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_league"
         android:name="com.user.brayan.condorlabs.ui.league.LeagueFragment"
-        android:label="league_fragment"
+        android:label="@string/title_league"
         tools:layout="@layout/league_fragment" >
 
         <action
@@ -19,14 +19,17 @@
     <fragment
         android:id="@+id/navigation_teams"
         android:name="com.user.brayan.condorlabs.ui.team.TeamsFragment"
-        android:label="teams_fragment"
-        tools:layout="@layout/teams_fragment" >
+        android:label="@string/title_teams"
+        tools:layout="@layout/teams_fragment">
+
         <action
             android:id="@+id/action_teamsFragment_to_navigation_league"
             app:destination="@id/navigation_league" />
+
         <argument
             android:name="idLeague"
             app:argType="long" />
+
         <action
             android:id="@+id/action_navigation_teams_to_detailsTeamFragment"
             app:destination="@id/detailsTeamFragment" />
@@ -35,12 +38,17 @@
     <fragment
         android:id="@+id/detailsTeamFragment"
         android:name="com.user.brayan.condorlabs.ui.details_team.DetailsTeamFragment"
-        android:label="details_team_fragment"
+        android:label="@string/title_details_teams"
         tools:layout="@layout/details_team_fragment">
 
         <argument
             android:name="idTeam"
             app:argType="long" />
+
+        <argument
+            android:name="idLeague"
+            app:argType="long" />
+
         <action
             android:id="@+id/action_detailsTeamFragment_to_navigation_teams"
             app:destination="@id/navigation_teams" />

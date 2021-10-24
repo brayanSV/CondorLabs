@@ -18,9 +18,9 @@ data class Events(
     @field:SerializedName("strTime")
     val timeEvent: String,
     @field:SerializedName("dateEventLocal")
-    val dateEventLocal: String,
+    val dateEventLocal: String?,
     @field:SerializedName("strTimeLocal")
-    val timeEventLocal: String,
+    val timeEventLocal: String?,
     @field:SerializedName("idHomeTeam")
     val idTeam: Long
 )
