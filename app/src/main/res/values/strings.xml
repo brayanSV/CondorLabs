@@ -13,4 +13,5 @@
     <string name="title_league">Leagues</string>
     <string name="title_teams">Teams</string>
     <string name="title_details_teams">Detail Team</string>
+    <string name="title_welcome">Welcome</string>
 </resources>
